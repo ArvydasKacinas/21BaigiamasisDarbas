@@ -1,5 +1,9 @@
 <?php include ("classes/logReg-class.php"); ?>
+<?php
+$logReg= new LogReg();
+$logReg->login();
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +19,14 @@
             <input class="form-control" name="slapyvardis" placeholder="Slapyvardis" >
             <input class="form-control" name="slaptazodis" type="password" placeholder="Slaptažodis" >
             <button class="btn btn-primary" type="submit" name="login">Prisijungti</button>
+
+            <?php
+
+                if(isset($_POST["login"])) {
+                    $vartotojai->login();
+                }     
+
+            ?>
         </form>
     </div>
 </body>
