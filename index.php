@@ -14,28 +14,57 @@
         <h1>Sveiki atvykę</h1>
     </div>
 
+    <div class="container">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?page=pagrindinis">Pagrindinis</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?page=prisijungti">Prisijungti</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?page=registruotis">Registruotis</a>
+            </li>
+        </ul>   
+        <?php 
+            //pagal GET kintamaji mes busime nukreipiami į tam tikrus puslapius
+        
+            if(isset($_GET["page"])) {
+                if(($_GET["page"]) == "prisijungti") {
+                    include("vartotojai/login.php");
+                } else if(($_GET["page"]) == "registruotis") {
+                    include("vartotojai/registration.php");
+                } else if(($_GET["page"]) == "pagrindinis") {
+                    include("vartotojai/index.php");
+                } else {
+                    include("vartotojai/index.php");
+                }
+            }
 
-    <div class="d-flex align-items-center justify-content-center vh-100">
+        ?>
+    </div>
+
+    <!-- <div class="d-flex align-items-center justify-content-center vh-100">
         <form method="GET">
             <button class="btn btn-primary" type="submit" name="loginPage">Prisijungimo meniu</button>
             <button class="btn btn-info" type="submit" name="regPage">Registracija naujiems vartotojams!</button>
         </form>
         <?php
-                if(isset($_GET["loginPage"])) {
-                    include("vartotojai/login.php");
-                } else if(isset($_GET["regPage"])) {
-                    // 1 = Ijungta ; 0 = Isjungta
-                    $registracijaOnOff="1";
+                // if(isset($_GET["loginPage"])) {
+                //     include("vartotojai/login.php");
+                // } else if(isset($_GET["regPage"])) {
+                //     // 1 = Ijungta ; 0 = Isjungta
+                //     $registracijaOnOff="1";
 
-                    if($registracijaOnOff==0) {
-                    header("location: vartotojai/regOFF.php");
-                }   else 
-                    include("vartotojai/registration.php");
-                } // else {
+                //     if($registracijaOnOff==0) {
+                //     header("location: vartotojai/regOFF.php");
+                // }   else 
+                //     include("vartotojai/registration.php");
+                // } // else {
                 //     // header("Location: index.php");
                 // }
         ?>
-    </div>
+    </div> -->
 
 
 </body>
