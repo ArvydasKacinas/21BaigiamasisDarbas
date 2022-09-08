@@ -1,7 +1,13 @@
 <?php include ("classes/logReg-class.php"); ?>
 <?php
 $logReg= new LogReg();
-$logReg->login();
+//sitoje vietoje kviesiu tiesiai kol kas ne login, bet l
+// viskas veikia dabar
+ $logReg->login();
+//teisingi duomenys grazino 1
+// $logReg->logIntoAcc("vartotojai", "laikas", "laikas");
+//neteisingi grazino 0
+// $logReg->logIntoAcc("vartotojai", "laikas", "laikas1");
 
 ?>
 
@@ -22,9 +28,9 @@ $logReg->login();
 
             <?php
 
-                if(isset($_POST["login"])) {
-                    $vartotojai->login();
-                }     
+                // if(isset($_POST["login"])) {
+                //     $vartotojai->login();
+                // }     
 
             ?>
         </form>

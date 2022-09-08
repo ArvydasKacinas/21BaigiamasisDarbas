@@ -10,6 +10,11 @@
     <title>Baigiamoji užduotis</title>
 </head>
 <body>
+    <div class="d-flex align-items-center justify-content-center">
+        <h1>Sveiki atvykę</h1>
+    </div>
+
+
     <div class="d-flex align-items-center justify-content-center vh-100">
         <form method="GET">
             <button class="btn btn-primary" type="submit" name="loginPage">Prisijungimo meniu</button>
@@ -19,10 +24,16 @@
                 if(isset($_GET["loginPage"])) {
                     include("vartotojai/login.php");
                 } else if(isset($_GET["regPage"])) {
+                    // 1 = Ijungta ; 0 = Isjungta
+                    $registracijaOnOff="1";
+
+                    if($registracijaOnOff==0) {
+                    header("location: vartotojai/regOFF.php");
+                }   else 
                     include("vartotojai/registration.php");
-                } else {
-                    // header("Location: index.php");
-                }
+                } // else {
+                //     // header("Location: index.php");
+                // }
         ?>
     </div>
 
