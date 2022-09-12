@@ -10,10 +10,12 @@
     <title>Baigiamoji užduotis</title>
 </head>
 <body>
-    <div class="d-flex align-items-center justify-content-center">
+    <div class="d-flex align-items-center justify-content-around">
+        <div class="logo">
+            <img class="logo" src="assets/logo.png" width="64px" height="64px">
+        </div>
         <h1>Sveiki atvykę</h1>
     </div>
-
     <div class="container">
         <ul class="nav">
             <li class="nav-item">
@@ -27,20 +29,38 @@
             </li>
         </ul>   
         <?php 
-            //pagal GET kintamaji mes busime nukreipiami į tam tikrus puslapius
         
             if(isset($_GET["page"])) {
+                // 1 = Ijungta ; 0 = Isjungta
+                $regOnOff=1;
+
                 if(($_GET["page"]) == "prisijungti") {
                     include("vartotojai/login.php");
-                } else if(($_GET["page"]) == "registruotis") {
+                } else if(($_GET["page"]) == "registruotis" && $regOnOff==1) {
                     include("vartotojai/registration.php");
+                } else if(($_GET["page"]) == "registruotis" && $regOnOff==0) {
+                    include("vartotojai/regOFF.php");
                 } else if(($_GET["page"]) == "pagrindinis") {
                     include("vartotojai/index.php");
                 } else {
                     include("vartotojai/index.php");
                 }
             }
+            //     if(isset($_GET["page"])) {
+            //         if(isset($_GET["page"])=="prisijungti") {
+            //             include("vartotojai/login.php");
+            //         } else if(isset($_GET["page"])=="registruotis") {
+            //         // 1 = Ijungta ; 0 = Isjungta
+            //         $registracijaOnOff="1";
 
+            //         if($registracijaOnOff==1) {
+            //         header("location: vartotojai/regOFF.php");
+            //     } 
+            //         include("vartotojai/registration.php");
+            //     }   else {
+            //         header("Location: index.php");
+            //     }
+            // }
         ?>
     </div>
 

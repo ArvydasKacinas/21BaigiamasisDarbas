@@ -10,7 +10,10 @@
     <title>Prisijungta</title>
 </head>
 <body>
-    <div class="d-flex align-items-center justify-content-center">
+    <div class="d-flex align-items-center justify-content-around">
+        <div class="logo">
+            <img class="logo" src="assets/logo.png" width="64px" height="64px">
+        </div>
         <h1>Prisijungta prie sistemos</h1>
         <!-- <form method="POST">
             <button class="btn btn-danger" type="submit" name="logOut">Atsijungti</button>
@@ -38,7 +41,7 @@
                 <a class="nav-link" href="logged.php?page=clients">Klientai</a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-danger" role="button" href="index.php?page=pagrindinis">Atsijungti</a>
+                <a class="btn btn-outline-danger" role="button" href="index.php?page=pagrindinis">Atsijungti</a>
             </li>
         </ul>
         <?php 
@@ -54,6 +57,7 @@
                 } else if(($_GET["page"]) == "pagrindinis") {
                     include("valdymas/main.php");
                 } else if(($_GET["page"]) == "logout") {
+                    
                     include("vartotojai/index.php");
                 } else {
                     include("valdymas/main.php");

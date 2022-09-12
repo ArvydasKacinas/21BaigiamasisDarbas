@@ -8,7 +8,18 @@
     <title>Įmonės</title>
 </head>
 <body>
-
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Pavadinimas</th>
+            <th>Tipas_ID</th>
+            <th>Aprašymas</th>
+            <th>Veiksmai</th>
+        </tr>
+        <?php $imones = new LogReg(); ?>
+        <?php $imones->imonesSelect("imones"); ?>
+        <?php // $vartotojai->deleteMovie(); ?>
+    </table>
 
 
 </body>

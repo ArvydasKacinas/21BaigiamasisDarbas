@@ -20,6 +20,26 @@ class DatabaseConnection {
 
     }
 
+    public function selectAction($table, $col ="ID", $sortDir ="ASC") {
+        try {
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "SELECT * FROM `$table` WHERE 1 ORDER BY $col $sortDir";
+            //pasiruosimas vykdyti
+            $stmt = $this->conn->prepare($sql);
+            //vykdyti
+            $stmt->execute();
+
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
+            // var_dump($result);
+
+            return $result;
+
+        } catch(PDOException $e) {
+            return "Nepavyko vykdyti uzklausos: " . $e->getMessage();
+        }
+    }
+
     public function insertAction($table, $cols, $values) {
 
         $cols = implode(",", $cols);
@@ -105,30 +125,30 @@ class DatabaseConnection {
     }
 
 
-    public function updateAction($table, $username, $password, $dateOfLog, $data) {
-        $cols = array_keys($data);
-        $values = array_values($data);
+    // public function updateAction($table, $username, $password, $dateOfLog, $data) {
+    //     $cols = array_keys($data);
+    //     $values = array_values($data);
 
-        $dataString = [];
-        for ($i=0; $i<count($cols); $i++) {
-           $dataString[] = $cols[$i] . " = '" . $values[$i]. "'";
-        }
-        $dataString = implode(",", $dataString);
-        var_dump($dataString);
+    //     $dataString = [];
+    //     for ($i=0; $i<count($cols); $i++) {
+    //        $dataString[] = $cols[$i] . " = '" . $values[$i]. "'";
+    //     }
+    //     $dataString = implode(",", $dataString);
+    //     var_dump($dataString);
 
-       try{
-              $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-              $sql = "UPDATE `$table` 
-              SET paskutinis_prisijungimas = $dateOfLog
-              WHERE slapyvardis = '$username' and slaptazodis = '$password'";
-              $stmt = $this->conn->prepare($sql);
-              $stmt->execute();
-              echo "Pavyko atnaujinti irasa";
-         } 
-       catch(PDOException $e) {
-              echo "Nepavyko atnaujinti iraso: " . $e->getMessage();
-       }
-    }
+    //    try{
+    //           $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //           $sql = "UPDATE `$table` 
+    //           SET paskutinis_prisijungimas = $dateOfLog
+    //           WHERE slapyvardis = '$username' and slaptazodis = '$password'";
+    //           $stmt = $this->conn->prepare($sql);
+    //           $stmt->execute();
+    //           echo "Pavyko atnaujinti irasa";
+    //      } 
+    //    catch(PDOException $e) {
+    //           echo "Nepavyko atnaujinti iraso: " . $e->getMessage();
+    //    }
+    // }
 }
 
 

@@ -13,7 +13,7 @@
     <div class="d-flex align-items-center justify-content-center vh-100">
         <div class="alert alert-danger" role="alert">
             <h3>Registracija buvo nesėkminga!</h3> <br>
-            Toks <u>slapyvardis</u> jau užimtas!
+            Toks <strong><u>SLAPYVARDIS</u></strong> jau užimtas!
         </div>
     </div>
     <!-- <div class="form-outline mb-4">

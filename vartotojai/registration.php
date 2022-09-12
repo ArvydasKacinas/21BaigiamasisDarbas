@@ -19,7 +19,7 @@ $logReg->createNewUser();
             <input class="form-control" name="pavarde" placeholder="Pavardė" >
             <input class="form-control" name="slapyvardis" placeholder="Slapyvardis" >
             <input class="form-control" name="slaptazodis" type="password" placeholder="Slaptažodis" >
-            <button  class="btn btn-info" type="submit" name="registrate">Registruotis!</button>
+            <button  class="btn btn-info" type="submit" name="registrate" >Registruotis!</button>
         </form>
     </div>
 </body>

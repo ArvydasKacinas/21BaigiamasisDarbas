@@ -8,7 +8,23 @@
     <title>Vartotojai</title>
 </head>
 <body>
-
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Vardas</th>
+            <th>Pavardė</th>
+            <th>Slapyvardis</th>
+            <th>Teisės ID</th>
+            <th>Slaptažodis</th>
+            <th>Registracijos Data</th>
+            <th>Paskutinis Prisijungimas</th>
+            <th>Veiksmai</th>
+        </tr>
+        <?php $vartotojai = new LogReg(); ?>
+        <?php $vartotojai->vartotojaiSelect("vartotojai"); ?>
+        <?php // $vartotojai->deleteMovie(); ?>
+        
+    </table>
 
 
 </body>
