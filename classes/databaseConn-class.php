@@ -71,6 +71,39 @@ class DatabaseConnection {
         }
     }
 
+    public function checkUsername($table,$slapyvardis) {
+
+        //pirma pasitikrinam ar sitas sql veikia gerai
+        //truksta dar $table
+        try {
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            //cia turi buti stulpeliu pavadinimai tokie kaip duomenu bazeje
+            $sql = "SELECT * FROM `$table` WHERE slapyvardis = '$slapyvardis'";
+            //var_dump($sql);
+            //sitoje vietoje as pakeiciau jungimasi prie mysql, nes tavo uzkomentuotas budas nelabai tinka, nes 
+            //jis proceduurinis, o ne objektinis
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
+            $count = count($result);
+            // $result = mysqli_query($this->conn, $sql);  
+            // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+            // $count = mysqli_num_rows($result);
+
+            //sitos uzklausos rezultatas yra $count jei $count = 1, viskas ok login ivyko, jei ne 1 - prisijungimas 
+            // nesekmingas
+            //del to dumpink ne sql o count
+            //dabar sitas metodas veiks viskas gerai. Galima sutvarkyti login
+            return $count;
+
+
+        } catch (PDOException $e) {
+            echo "<h1> Login failed. Invalid username or password.</h1>: " . $e->getMessage();
+        }
+    }
+
 
     public function updateAction($table, $username, $password, $dateOfLog, $data) {
         $cols = array_keys($data);

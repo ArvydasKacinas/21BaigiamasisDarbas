@@ -39,9 +39,13 @@ class LogReg extends DatabaseConnection {
            $tikrinimasP=$pavarde;
            $tikrinimasSV=$slapyvardis;
            $tikrinimasSZ=$slaptazodis;
+
+           $existingUser=$this->checkUsername("vartotojai",$slapyvardis);
            
             if($tikrinimasV=="" OR $tikrinimasP=="" OR $tikrinimasSV=="" OR $tikrinimasSZ=="") {
                 header("location: vartotojai/regFail.php");
+            } else if($existingUser==1) {
+                header("location: vartotojai/regFailU.php");
             } else {
                 $this->addNewUser($vardas,$pavarde,$slapyvardis,$slaptazodis);
             }
@@ -53,7 +57,7 @@ class LogReg extends DatabaseConnection {
         if(isset($_POST["login"])) {
             $username=$_POST["slapyvardis"];
             $password=$_POST["slaptazodis"];
-            $dateOfLog=date("Y-m-d");
+            // $dateOfLog=date("Y-m-d");
 
            $logInSuccessfull = $this->logIntoAcc("vartotojai",$username,$password);
 

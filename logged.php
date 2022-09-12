@@ -10,14 +10,57 @@
     <title>Prisijungta</title>
 </head>
 <body>
-    <h1>prisijungta</h1>
-    <!-- <form method="POST">
-        <button class="btn btn-danger" type="submit" name="logOut">Atsijungti</button>
-        <?php
-            // if(isset($_POST["logOut"])) {
-            //     include("vartotojai/logOut.php");
-            // }
+    <div class="d-flex align-items-center justify-content-center">
+        <h1>Prisijungta prie sistemos</h1>
+        <!-- <form method="POST">
+            <button class="btn btn-danger" type="submit" name="logOut">Atsijungti</button>
+            <?php
+                // if(isset($_POST["logOut"])) {
+                //     include("vartotojai/logOut.php");
+                // }
+            ?>
+        </form> -->
+    </div>
+    <div>
+    </div>
+    <div class="container">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="logged.php?page=main">Pagrindinis</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logged.php?page=vartotojai">Vartotojai</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logged.php?page=company">Įmonės</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logged.php?page=clients">Klientai</a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-danger" role="button" href="index.php?page=pagrindinis">Atsijungti</a>
+            </li>
+        </ul>
+        <?php 
+            //pagal GET kintamaji mes busime nukreipiami į tam tikrus puslapius
+        
+            if(isset($_GET["page"])) {
+                if(($_GET["page"]) == "vartotojai") {
+                    include("valdymas/vartotojai.php");
+                } else if(($_GET["page"]) == "company") {
+                    include("valdymas/imones.php");
+                } else if(($_GET["page"]) == "clients") {
+                    include("valdymas/klientai.php");
+                } else if(($_GET["page"]) == "pagrindinis") {
+                    include("valdymas/main.php");
+                } else if(($_GET["page"]) == "logout") {
+                    include("vartotojai/index.php");
+                } else {
+                    include("valdymas/main.php");
+                }
+            }
+
         ?>
-    </form> -->
+    </div>
 </body>
 </html>
